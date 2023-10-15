@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "myFirstFont";
+    src: url(../font/Carnevalee\ Freakshow.ttf);
+}
+
+@font-face {
+    font-family: "second";
+    src: url(../font/OptimaLTCYRRoman.woff);
+}
+
+@font-face {
+    font-family: "third";
+    src: url(../font/Gotham-Bold.otf);
+}
+
+@font-face {
+    font-family: "fourth";
+    src: url(../font/Carnevalee\ Freakshow\ Demo.ttf);
+}
+
+@font-face {
+    font-family: "fifth";
+    src: url(../font/GothamBook.ttf);
+}
+
+body {
+    margin: 0px;
+}
+
+.menu {
+    margin: 0px;
+    background-image: url('../assets/formBg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.header {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.header img {
+    width: 35%;
+    position: relative;
+}
+
+.light img {
+    width: 100%;
+    position: absolute;
+}
+
+form {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.inputname {
+    padding-bottom: 1%;
+}
+
+.inputmobile {
+    padding-bottom: 1%;
+}
+
+input[type=text],
+[type=number] {
+    width: 35%;
+    height: 60px;
+    border: none;
+    background-color: white;
+    border: 10px solid red;
+    opacity: .7;
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0px;
+    color: red;
+    cursor: pointer;
+    text-align: center;
+    font-family: "myFirstFont";
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    /* number side display none */
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    font-size: 50px;
+    color: red;
+    border-color: red;
+    ;
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer */
+    font-size: 50px;
+    color: red;
+    border-color: red;
+    ;
+}
+
+ ::placeholder {
+    font-size: 50px;
+    color: red;
+    border-color: red;
+    ;
+}
+
+.button img {
+    position: absolute;
+    width: 20%;
+    cursor: pointer;
+    bottom: 0px;
+    left: 40%;
+}
+
+span {
+    padding-top: .5%;
+    font-size: 30px;
+    color: red;
+    font-family: "myFirstFont";
+}
+
+#check {
+    height: 30px;
+    width: 5%;
+    cursor: pointer;
+}

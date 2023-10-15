@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>Game </title>
+    <link href="assets/loader.png" rel="icon">
+
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/main_dubli.js"></script>
+    <script src="js/charSelect.js"></script>
+    <script src="js/mygame.js"></script>
+    <script src="js/scorepg.js"></script>
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/thankyou.js"></script>
+
+    <style>
+        body {
+            background: white!important;
+            margin: 0px !important;
+            padding: 0px;
+            overflow: hidden;
+        }
+        
+        #container {
+            display: none;
+        }
+        /* canvas {
+            display: none !important;
+        } */
+        /*         
+        canvas {
+            display: none;
+        }
+        
+        canvas {
+            display: none !important;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <div class="menu">
+            <div class="light">
+                <img src="assets/light.png" style="width:100% ;">
+                <img src="assets/lightBloom.png" style="width:100%; display:none;" id="lightbloom">
+            </div>
+            <div class="header">
+                <img src="assets/Submit_your_score.png">
+            </div>
+
+            <form>
+
+                <div class="inputname">
+                    <div class="name">
+                        <input type="text" id="name" name="username" placeholder="Name" maxlength="30" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="inputmobile">
+                    <div class="mobile">
+                        <input type="number" id="mobile" name="mobile" placeholder="Mobile" maxlength="10" autocomplete="off">
+
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" required name="checkbox" value="check" id="check">
+
+                    <a href="#" style="font-size: 20px; color:red;padding-right: 12px;">I Agree Terms and Conditions </a>
+
+                </div>
+                <span id="error"></span>
+
+                <div class="button">
+                    <img src="assets/Submit.png">
+                </div>
+
+
+
+            </form>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+    <script>
+        $(document).ready(function() {
+
+            setInterval(function() {
+                $("#lightbloom").toggle();
+
+            }, 300);
+
+
+
+            $(".button img").click(function(e) {
+                $("canvas").hide();
+
+                var name = $("#name").val();
+
+                var mobile = $("#mobile").val();
+                var valid = true;
+                // e.preventDefault();
+                // console.log("mobile", mobile);
+                // console.log("name", name);
+                if (name == "" || name.length <= 2) {
+                    $("#error").text("**please enter name");
+                    $("#refresh").show();
+                    valid = false;
+                    return;
+                }
+                if (mobile == "" || mobile.length != 10) {
+                    $("#error").text("**please enter mobile number");
+                    $("#refresh").show();
+                    valid = false;
+                    return;
+
+                }
+                if ($('input[type="checkbox"]').is(":not(:checked)")) {
+                    $("#error").text("**please click on checkbox");
+
+                    valid = false;
+                    return
+                } else {
+                    $("#error").remove();
+
+                }
+                if (valid == false) {
+                    e.preventDefault();
+                    console.log("error")
+                    return;
+                } else {
+                    console.log("ajax submit")
+
+                    $.ajax({
+                        method: "post",
+                        url: "ajax_data.php",
+                        data: {
+                            type: "info",
+                            'name': name,
+                            'mobile': mobile,
+                            uid: global_userid
+                        },
+                        success: function(data) {
+                            //console.log(data)
+                            thank();
+                        }
+
+                    });
+                }
+            });
+            // $('input[type="checkbox"]').click(function() {
+
+            // if ($('#check').is(":not(:checked)")) {
+            //     $("#error").text("**please click on checkbox");
+
+            // } else {
+            //     $("#error").hide();
+            // }
+
+            // });
+
+
+
+
+            // var game = new Phaser.Game(2200, 1242, Phaser.AUTO);
+
+
+            // $(function() {
+            //     resizeCanvas();
+            // });
+
+            // $(window).on('resize', function() {
+            //     resizeCanvas();
+            // });
+
+            // function resizeCanvas() {
+            //     var canvas = $('#canvas');
+            //     canvas.css("width", $(window).width());
+            //     canvas.css("height", $(window).height());
+            // }
+
+
+
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
